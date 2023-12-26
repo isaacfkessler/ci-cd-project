@@ -15,7 +15,7 @@ spec:
         app: appv1
     spec:
       containers:
-      - name: isaacfkessler/app-devops
+      - name: app-devops
         image: isaacfkessler/app-devops
         ports:
         - containerPort: 80
