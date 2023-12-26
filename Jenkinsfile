@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh "docker push ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER}"
                 sh "docker pull ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER}"
-                sh "sed -i 's|${DOCKER_HUB}:.*|${DOCKER_HUB}:${APP_VERSION}|' app-deployment.yaml"
+                sh "sed -i 's|${DOCKER_HUB}*|${DOCKER_HUB}:${APP_VERSION}|' app-deployment.yaml"
             }
         }
 
