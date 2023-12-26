@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
-  type: NodePort  # Alterado para NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 3080
