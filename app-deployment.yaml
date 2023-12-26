@@ -22,14 +22,40 @@ spec:
 
 ---
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appv1
+  labels:
+    app: appv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appv1
+  template:
+    metadata:
+      labels:
+        app: appv1
+    spec:
+      containers:
+      - name: app-devops
+        image: isaacfkessler/app-devops
+        ports:
+        - containerPort: 80
+
+---
+
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service
 spec:
-  selector:
-    app: appv1
+  type: NodePort  # Alterado para NodePort
   ports:
     - protocol: TCP
       port: 3080
       targetPort: 80
+  selector:
+    app: appv1
+
