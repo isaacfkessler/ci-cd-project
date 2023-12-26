@@ -27,6 +27,7 @@ kind: Service
 metadata:
   name: nginx-service
 spec:
+  type: NodePort
   ports:
     - protocol: TCP
       port: 3080
