@@ -24,5 +24,11 @@ pipeline {
                 sh "docker push ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER}"
             }
         }
+
+        stage('Deploy to K8S Production') {
+            steps {
+                sh "kubectl apply -f app-deployment.yaml"
+            }
+        }
     }
 }
