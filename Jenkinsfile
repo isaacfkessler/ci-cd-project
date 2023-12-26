@@ -22,6 +22,9 @@ pipeline {
         stage('Push Container') {
             steps {
                 sh "docker push ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER}"
+                sh "docker pull ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER}"
+                sh "docker tag ${DOCKER_HUB}:${APP_VERSION}.${BUILD_NUMBER} ${DOCKER_HUB}:latest"
+                sh "docker push ${DOCKER_HUB}:latest"
             }
         }
 
